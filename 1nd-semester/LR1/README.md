@@ -33,7 +33,13 @@ sys.path.append("http://localhost:8000")
 12. Задание про-уровня (\*\*\*): реализовать загрузку **пакета**, разобравшись с аргументами функции spec_from_loader и внутренним устройством импорта пакетов.
 
 ## Ссылка на  Replit:
-![LAB1_test](https://github.com/BlohinaValeria/Programming-2nd-course/blob/main/Скриншоты%20программ/LAB1_screen3.1%20test.png)
+!(перейти)(https://github.com/BlohinaValeria/Programming-2nd-course/blob/main/Скриншоты%20программ/LAB1_screen3.1%20test.png)
 
-##
-![LAB1_test](https://github.com/BlohinaValeria/Programming-2nd-course/blob/main/Скриншоты%20программ/LAB1_screen3.1%20test.png)
+## Запуск сервера
+![запуск](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR1/запуск%20сервера.png)
+
+## Тестирование
+![тестирование](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR1/тестирование.png)
+
+## Успешнный импорт
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR1/успешный%20импорт.png)
