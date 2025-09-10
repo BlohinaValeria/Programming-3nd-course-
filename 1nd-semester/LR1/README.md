@@ -1,1 +1,7 @@
-# Programming-3nd-course-
+# :wavy_dash: ПРОГРАММИРОВАНИЕ *3 КУРС* :wavy_dash:
+
+***Автор: Блохина Валерия Сергеевна***:mortar_board:
+# :wavy_dash: 1 семестр :wavy_dash:
+## :white_check_mark: Лабораторная работа 1
+### _Ключевые слова: импорт / модули_
+[Перейти]()
