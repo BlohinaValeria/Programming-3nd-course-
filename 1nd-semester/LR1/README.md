@@ -43,3 +43,10 @@ sys.path.append("http://localhost:8000")
 
 ## Успешнный импорт
 ![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR1/успешный%20импорт.png)
+
+## Структура файлов
+![]()
+
+## Импорт пакетов
+![]()
+
