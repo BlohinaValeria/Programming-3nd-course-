@@ -12,4 +12,4 @@ python-open-weather
 ## Решение-репозиторий
 [перейти](https://github.com/BlohinaValeria/openweather-api-client)
 
-
+## Комментарии к решению
