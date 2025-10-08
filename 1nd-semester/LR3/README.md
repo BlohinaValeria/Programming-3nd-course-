@@ -10,6 +10,6 @@ python-open-weather
 Постарайтесь приблизиться к описанному в статье «идеальному PyPI-пакету».
 
 ## Решение-репозиторий
-![перейти](https://github.com/BlohinaValeria/openweather-api-client)
+[перейти](https://github.com/BlohinaValeria/openweather-api-client)
 
 
