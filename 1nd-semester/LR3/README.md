@@ -19,12 +19,15 @@ python-open-weather
 
 :small_red_triangle_down:
 Создание репозитория
+
 ![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR3/1.png)
 
 :small_red_triangle_down:
 Консоль
+
 ![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR3/2.png)
 
 :small_red_triangle_down:
 Загруженный PyPI-пакет
+
 ![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR3/3.png)
