@@ -13,3 +13,14 @@ python-open-weather
 [перейти](https://github.com/BlohinaValeria/openweather-api-client)
 
 ## Комментарии к решению
+Возникшие проблемы: 
+:small_red_triangle_down: Проблемы в работе на TestPyPy - добавление двухфакторной защиты
+
+:small_red_triangle_down: Создание репозитория
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR3/1.png)
+
+:small_red_triangle_down: Консоль
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR3/2.png)
+
+:small_red_triangle_down: Загруженный PyPI-пакет
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR3/3.png)
