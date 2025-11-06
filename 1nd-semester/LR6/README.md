@@ -19,7 +19,7 @@ https://github.com/tornadoweb/tornado/tree/stable/demos/websocket
 
 
 ## Полученный сайт
-![]()
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR6/сайт.png)
 
 
 ## Код программы
