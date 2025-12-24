@@ -38,7 +38,7 @@ CI/CD в GitHub Actions workflow должен:
 Структура этапов:
 checkout → setup python → install deps → run tests → deploy
 ⚠️ Реальный деплой: sync на сервер. 
-
+```
 backend/
  ├── app.py
  ├── requirements.txt
@@ -48,8 +48,13 @@ backend/
 .github/
  └── workflows/
       └── deploy.yml
+```
+
 Представьте ссылку на свой репозиторий (форк репозитория) с демо и отчетом по выполнению работы. 
+
 ## Получилось:
+
+![]()
 
 ## Проблемные моменты:
 1. Не корректное отображение фронтенда
