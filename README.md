@@ -25,3 +25,7 @@
 ## :white_check_mark: Лабораторная работа 6
 ### _Ключевые слова: FastAPI / паттерн / "Наблюдатель"_
 [Перейти](https://github.com/BlohinaValeria/Programming-3nd-course-/tree/main/1nd-semester/LR6)
+
+## :white_check_mark: Лабораторная работа 7
+### _Ключевые слова:счетчик / deploy_
+[Перейти](https://github.com/BlohinaValeria/Programming-3nd-course-/tree/main/1nd-semester/LR6)
