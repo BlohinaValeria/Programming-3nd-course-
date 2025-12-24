@@ -54,15 +54,15 @@ backend/
 
 ## Получилось:
 
-![]()
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR7/запуск%20.png)
 
 ## Проблемные моменты:
 1. Не корректное отображение фронтенда
 
-![]()
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR7/фронтенд.png)
   
 2. Не проходят тесты
 
-![]()
+![](https://github.com/BlohinaValeria/Programming-3nd-course-/blob/main/1nd-semester/LR7/тесты.png)
 
 
