@@ -1,6 +1,6 @@
 # Лабораторная работа 7 Развертывание и деплой приложения «Счетчик» на Python
 
-Репозиторий: [перейти(]https://github.com/BlohinaValeria/counter-deploy)
+Репозиторий: ![перейти(]https://github.com/BlohinaValeria/counter-deploy)
 
 Дополняется
 Задание 
