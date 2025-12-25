@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Glossary gRPC</title>
+    <style>
+        .term-card { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin: 10px; 
+            border-radius: 5px; 
+            background: #f9f9f9;
+        }
+        .search-box { 
+            margin: 20px 0; 
+            padding: 10px; 
+            width: 100%; 
+            font-size: 16px;
+            border: 2px solid #007acc;
+            border-radius: 5px;
+        }
+        .popular-terms {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e7f3ff;
+            border-radius: 5px;
+        }
+        .popular-tag {
+            display: inline-block;
+            background: #007acc;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .popular-tag:hover {
+            background: #005a9e;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+        }
+        .term-count {
+            color: #666;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .debug-info {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐍 Python Glossary (gRPC)</h1>
+    
+    <div class="debug-info" id="debugInfo">
+        Статус: Загрузка...
+    </div>
+
+    <input type="text" id="search" class="search-box" placeholder="Введите термин для поиска...">
+
+    <div class="term-count" id="termCount">-</div>
+
+    <div class="popular-terms">
+        <strong>Быстрый доступ:</strong><br>
+        <span class="popular-tag" onclick="showTerm('Переменная')">Переменная</span>
+        <span class="popular-tag" onclick="showTerm('Функция')">Функция</span>
+        <span class="popular-tag" onclick="showTerm('Класс')">Класс</span>
+        <span class="popular-tag" onclick="showTerm('Объект')">Объект</span>
+        <span class="popular-tag" onclick="showTerm('Список')">Список</span>
+        <span class="popular-tag" onclick="showTerm('Словарь')">Словарь</span>
+        <span class="popular-tag" onclick="showTerm('Модуль')">Модуль</span>
+        <span class="popular-tag" onclick="showTerm('Кортеж')">Кортеж</span>
+        <span class="popular-tag" onclick="showTerm('Множество')">Множество</span>
+        <span class="popular-tag" onclick="showTerm('Пакет')">Пакет</span>
+    </div>
+    
+    <div id="terms" class="loading">Загрузка терминов...</div>
+
+<script>
+    // Локальные данные на основе вашего GlossaryData (без категорий)
+    const localTerms = [
+        {
+            "id": 1,
+            "term": "Переменная",
+            "definition": "Именованная область памяти для хранения данных",
+            "examples": "x = 5\nname = 'Python'"
+        },
+        {
+            "id": 2,
+            "term": "Функция",
+            "definition": "Блок кода, выполняющий определенную задачу",
+            "examples": "def greet(name):\n    return f'Hello {name}'"
+        },
+        {
+            "id": 3,
+            "term": "Класс",
+            "definition": "Шаблон для создания объектов в объектно-ориентированном программировании",
+            "examples": "class Dog:\n    def __init__(self, name):\n        self.name = name"
+        },
+        {
+            "id": 4,
+            "term": "Объект",
+            "definition": "Экземпляр класса, содержащий данные и методы",
+            "examples": "my_dog = Dog('Rex')"
+        },
+        {
+            "id": 5,
+            "term": "Модуль",
+            "definition": "Файл с кодом Python, который можно импортировать",
+            "examples": "import math\nfrom datetime import datetime"
+        },
+        {
+            "id": 6,
+            "term": "Пакет",
+            "definition": "Каталог, содержащий модули и файл __init__.py",
+            "examples": "from my_package import my_module"
+        },
+        {
+            "id": 7,
+            "term": "Список",
+            "definition": "Изменяемая упорядоченная коллекция элементов",
+            "examples": "fruits = ['apple', 'banana', 'orange']"
+        },
+        {
+            "id": 8,
+            "term": "Кортеж",
+            "definition": "Неизменяемая упорядоченная коллекция элементов",
+            "examples": "coordinates = (10, 20)"
+        },
+        {
+            "id": 9,
+            "term": "Словарь",
+            "definition": "Неупорядоченная коллекция пар ключ-значение",
+            "examples": "person = {'name': 'John', 'age': 30}"
+        },
+        {
+            "id": 10,
+            "term": "Множество",
+            "definition": "Неупорядоченная коллекция уникальных элементов",
+            "examples": "unique_numbers = {1, 2, 3, 3, 4}  # {1, 2, 3, 4}"
+        }
+    ];
+
+    let allTerms = [];
+
+    // Загрузка терминов
+    async function loadTerms() {
+        const debugInfo = document.getElementById('debugInfo');
+        
+        try {
+            debugInfo.textContent = 'Статус: Пробуем загрузить с сервера...';
+            
+            const response = await fetch('/api/terms');
+            console.log('Response status:', response.status);
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Server data:', data);
+                
+                if (data.success && data.terms && data.terms.length > 0) {
+                    // Убираем категории из данных с сервера
+                    allTerms = data.terms.map(term => {
+                        const { category, ...termWithoutCategory } = term;
+                        return termWithoutCategory;
+                    });
+                    debugInfo.textContent = `Статус: Загружено ${data.terms.length} терминов с сервера`;
+                    showSuccess('Данные загружены с сервера');
+                } else {
+                    throw new Error('Сервер вернул пустые данные');
+                }
+            } else {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+        } catch (error) {
+            console.warn('Server load failed, using local data:', error);
+            allTerms = localTerms;
+            debugInfo.textContent = `Статус: Используются локальные данные (${localTerms.length} терминов)`;
+            showWarning('Используются локальные данные');
+        }
+        
+        displayAllTerms();
+        updateTermCount(allTerms.length);
+    }
+
+    // Показать все термины
+    function displayAllTerms() {
+        const container = document.getElementById('terms');
+        
+        if (allTerms.length === 0) {
+            container.innerHTML = '<div class="error">Нет терминов для отображения</div>';
+            return;
+        }
+
+        container.innerHTML = allTerms.map(term => `
+            <div class="term-card">
+                <h3>${term.term}</h3>
+                <p><strong>Определение:</strong> ${term.definition}</p>
+                ${term.examples ? `<p><strong>Пример:</strong></p><pre><code>${term.examples}</code></pre>` : ''}
+                <div style="margin-top: 10px; font-size: 12px; color: #888;">
+                    ID: ${term.id}
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // Показать конкретный термин
+    function showTerm(termName) {
+        console.log('Showing term:', termName);
+        
+        const term = allTerms.find(t => 
+            t.term.toLowerCase() === termName.toLowerCase()
+        );
+        
+        if (term) {
+            const container = document.getElementById('terms');
+            container.innerHTML = `
+                <div class="term-card">
+                    <h3>${term.term}</h3>
+                    <p><strong>Определение:</strong> ${term.definition}</p>
+                    ${term.examples ? `<p><strong>Пример:</strong></p><pre><code>${term.examples}</code></pre>` : ''}
+                    <div style="margin-top: 10px; font-size: 12px; color: #888;">
+                        ID: ${term.id}
+                    </div>
+                </div>
+                <button onclick="displayAllTerms()" style="margin: 10px; padding: 8px 15px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    ← Вернуться ко всем терминам
+                </button>
+            `;
+            updateTermCount(1);
+            document.getElementById('search').value = termName;
+        } else {
+            alert(`Термин "${termName}" не найден!`);
+        }
+    }
+
+    // Поиск терминов
+    function searchTerms(query) {
+        if (!query || query.trim().length === 0) {
+            displayAllTerms();
+            updateTermCount(allTerms.length);
+            return;
+        }
+
+        const results = allTerms.filter(term => 
+            term.term.toLowerCase().includes(query.toLowerCase()) ||
+            term.definition.toLowerCase().includes(query.toLowerCase())
+        );
+
+        const container = document.getElementById('terms');
+        
+        if (results.length === 0) {
+            container.innerHTML = `
+                <div class="error">
+                    Термины не найдены для: "${query}"
+                </div>
+                <button onclick="displayAllTerms()" style="margin: 10px; padding: 8px 15px; background: #6c757d; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Показать все термины
+                </button>
+            `;
+        } else {
+            container.innerHTML = results.map(term => `
+                <div class="term-card">
+                    <h3>${term.term}</h3>
+                    <p><strong>Определение:</strong> ${term.definition}</p>
+                    ${term.examples ? `<p><strong>Пример:</strong></p><pre><code>${term.examples}</code></pre>` : ''}
+                </div>
+            `).join('');
+        }
+        
+        updateTermCount(results.length);
+    }
+
+    // Обновление счетчика
+    function updateTermCount(count) {
+        document.getElementById('termCount').textContent = `Показано терминов: ${count}`;
+    }
+
+    // Вспомогательные функции для уведомлений
+    function showSuccess(message) {
+        const debugInfo = document.getElementById('debugInfo');
+        debugInfo.style.background = '#d1edff';
+        debugInfo.style.color = '#0c5460';
+    }
+
+    function showWarning(message) {
+        const debugInfo = document.getElementById('debugInfo');
+        debugInfo.style.background = '#fff3cd';
+        debugInfo.style.color = '#856404';
+    }
+
+    // Обработчики событий
+    document.getElementById('search').addEventListener('input', (e) => {
+        searchTerms(e.target.value.trim());
+    });
+
+    // Загрузка при старте
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Starting glossary application...');
+        loadTerms();
+    });
+
+    // Глобальные функции для кнопок
+    window.showTerm = showTerm;
+    window.displayAllTerms = displayAllTerms;
+</script>
+</body>
+</html>

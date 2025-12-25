@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package glossary;
+
+service GlossaryService {
+  rpc GetTerm (TermRequest) returns (TermResponse);
+  rpc GetAllTerms (Empty) returns (TermsResponse);
+  rpc SearchTerms (SearchRequest) returns (TermsResponse);
+  rpc AddTerm (AddTermRequest) returns (TermResponse);
+}
+
+message Empty {}
+
+message TermRequest {
+  int32 id = 1;
+}
+
+message SearchRequest {
+  string query = 1;
+}
+
+message AddTermRequest {
+  string term = 1;
+  string definition = 2;
+  string category = 3;
+  string examples = 4;
+}
+
+message Term {
+  int32 id = 1;
+  string term = 2;
+  string definition = 3;
+  string category = 4;
+  string examples = 5;
+}
+
+message TermResponse {
+  Term term = 1;
+  bool success = 2;
+  string message = 3;
+}
+
+message TermsResponse {
+  repeated Term terms = 1;
+  bool success = 2;
+  string message = 3;
+}
