@@ -1,7 +1,10 @@
 # Отчет по реализации ETL-конвейера для анализа дефектов оборудования ТЭЦ
+
 ---
-Ссылка на репозиторий: ![](https://github.com/BlohinaValeria/ETL-project)
+## Ссылка на репозиторий: 
+![](https://github.com/BlohinaValeria/ETL-project)
 ---
+
 ---
 
 **Выполнила:** Блохина В. С.
