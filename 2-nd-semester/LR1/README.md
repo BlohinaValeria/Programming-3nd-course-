@@ -57,18 +57,6 @@ steps:
 #### 2.5.3. Добавление проверок Markdown
 В пайплайн были добавлены отдельные шаги для проверки синтаксиса Markdown-файлов. Это позволяет выявлять ошибки форматирования на этапе CI и повышает качество контента.
 
-Добавленный шаг проверки Markdown:
-
-yaml
-  - name: Lint Markdown files
-    run: |
-      npx markdownlint-cli2 "content/**/*.md" "#node_modules"
-Также была добавлена проверка ссылок в Markdown-файлах для предотвращения появления битых ссылок:
-
-yaml
-  - name: Check Markdown links
-    run: |
-      npx markdown-link-check --config .mlc.json "content/**/*.md"
 #### 2.5.4. Итоговый пайплайн
 Полный файл .sourcecraft/ci.yaml включает следующие этапы:
 
