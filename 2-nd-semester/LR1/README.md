@@ -31,33 +31,8 @@
 - Публикует сгенерированные файлы в директорию `site` в ветке `release`.
 - Автоматически запускается при внесении изменений в основную ветку `main`.
 
-#### 2.5.2. Адаптация пайплайна для Hugo
-Исходный пайплайн был переписан для работы с Hugo. Основные изменения затронули этап сборки:
 
-```yaml
-# .sourcecraft/ci.yaml (фрагмент)
-steps:
-  - name: Checkout
-    uses: actions/checkout@v4
-
-  - name: Setup Hugo
-    uses: actions/setup-hugo@v2
-    with:
-      hugo-version: '0.121.1'
-
-  - name: Build site with Hugo
-    run: hugo --minify --destination ./site
-
-  - name: Deploy to 'release' branch
-    uses: actions/deploy-branch@v1
-    with:
-      source: ./site
-      target-branch: release
-
-#### 2.5.3. Добавление проверок Markdown
-В пайплайн были добавлены отдельные шаги для проверки синтаксиса Markdown-файлов. Это позволяет выявлять ошибки форматирования на этапе CI и повышает качество контента.
-
-#### 2.5.4. Итоговый пайплайн
+#### 2.5.2. Итоговый пайплайн
 Полный файл .sourcecraft/ci.yaml включает следующие этапы:
 
 Checkout: Клонирование кода.
