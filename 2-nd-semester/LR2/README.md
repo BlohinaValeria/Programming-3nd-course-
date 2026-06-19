@@ -2,4 +2,4 @@
 
 ## Цель работы: исследовать методы оптимизации вычисления кода, используя потоки, процессы, Cython и отключение GIL на основе сравнения времени вычисления функции численного интегрирования методом прямоугольников, реализованной на чистом Python
 
-Ссылка на выполненную работу ![](https://colab.research.google.com/drive/1_vRNWJiRACdh4K27MNMWrSHbSYSDB4P0#scrollTo=Br_Z9BQr4JiS)
+Ссылка на выполненную работу [](https://colab.research.google.com/drive/1_vRNWJiRACdh4K27MNMWrSHbSYSDB4P0#scrollTo=Br_Z9BQr4JiS)
