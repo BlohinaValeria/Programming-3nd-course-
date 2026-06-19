@@ -17,9 +17,9 @@
 - FastAPI — современный асинхронный фреймворк с автоматической документацией
 
 ## Ссылка 
-![](https://colab.research.google.com/drive/18TwZ75NKSunY9MArFh0DKNnGu4fdGuEx?usp=sharing#scrollTo=WKMe5Xvh7Wl0)
+[перейти](https://colab.research.google.com/drive/18TwZ75NKSunY9MArFh0DKNnGu4fdGuEx?usp=sharing#scrollTo=WKMe5Xvh7Wl0)
 
  # Отчет по лабораторной работе: Поиск публикаций в Crossref API
 
  ## Ссылка 
-![](https://github.com/BlohinaValeria/Programming_dop)
+[перейти](https://github.com/BlohinaValeria/Programming_dop)
